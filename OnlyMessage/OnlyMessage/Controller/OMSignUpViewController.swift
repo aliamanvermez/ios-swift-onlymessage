@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class OMSignUpViewController: UIViewController {
     var textFieldEmail = UITextField()
     var textFieldPassword = UITextField()
@@ -24,7 +24,8 @@ class OMSignUpViewController: UIViewController {
     
     func createUI() {
         textFieldEmail.borderStyle = .line
-        textFieldEmail.layer.borderColor = UIColor.systemGray.cgColor
+        textFieldEmail.layer.borderColor = UIColor.systemBlue.cgColor
+        textFieldEmail.backgroundColor = .cyan
         textFieldEmail.placeholder = "Email"
         textFieldEmail.snp.makeConstraints { make in
             make.height.equalTo(30)
@@ -66,7 +67,8 @@ class OMSignUpViewController: UIViewController {
         
         
         textFieldPassword.borderStyle = .line
-        textFieldPassword.layer.borderColor = UIColor.systemGray.cgColor
+        textFieldPassword.layer.borderColor = UIColor.systemBlue.cgColor
+        textFieldPassword.backgroundColor = .cyan
         textFieldPassword.placeholder = "Password"
         textFieldPassword.snp.makeConstraints { make in
             make.height.equalTo(30)
@@ -97,7 +99,17 @@ class OMSignUpViewController: UIViewController {
         
     }
     @objc func buttonSignUpClicked() {
-        print("bastın")
+     
+        if textFieldEmail != nil {
+            Auth.auth().createUser(withEmail: textFieldEmail.text!, password: textFieldPassword.text!) { data, error in
+                if error != nil {
+                    print(error?.localizedDescription ?? "Error")
+                } else {
+                    print("Giriş Yapıldı")
+                }
+            }
+        }
+        
     }
 
 }
