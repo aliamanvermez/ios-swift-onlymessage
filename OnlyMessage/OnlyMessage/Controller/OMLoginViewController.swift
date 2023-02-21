@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 class OMLoginViewController: UIViewController {
 
     var textFieldEmail = UITextField()
@@ -44,6 +45,7 @@ class OMLoginViewController: UIViewController {
         }
         
         buttonLogIn.setRoundedButton(button: buttonLogIn)
+        buttonLogIn.addTarget(self, action: #selector(buttonLogInClicked), for: .touchUpInside)
         buttonLogIn.setTitle("Log In", for: .normal)
         buttonLogIn.snp.makeConstraints { make in
             make.width.equalTo(100)
@@ -63,9 +65,25 @@ class OMLoginViewController: UIViewController {
         }
     }
     
+    @objc func buttonLogInClicked(){
+        if textFieldEmail != nil && textFieldPassword != nil {
+            Auth.auth().signIn(withEmail: textFieldEmail.text! , password: textFieldPassword.text!) { authResult, error in
+                if error != nil {
+                    print(error?.localizedDescription ?? "Error")
+                } else {
+                    print("Hoşgeldiniz")
+                }
+            }
+        }
+       
+        
+        let vc = OMChatsViewController()
+        present(vc, animated: true)
+    }
+    
+   
     @objc func buttonSignUpClicked(){
         let vc = OMSignUpViewController()
-        vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
 

@@ -100,7 +100,7 @@ class OMSignUpViewController: UIViewController {
     }
     @objc func buttonSignUpClicked() {
      
-        if textFieldEmail != nil {
+        if textFieldEmail != nil && textFieldPassword != nil {
             Auth.auth().createUser(withEmail: textFieldEmail.text!, password: textFieldPassword.text!) { data, error in
                 if error != nil {
                     print(error?.localizedDescription ?? "Error")
@@ -109,6 +109,9 @@ class OMSignUpViewController: UIViewController {
                 }
             }
         }
+        
+        let vc = OMLoginViewController()
+        present(vc, animated: true)
         
     }
 
