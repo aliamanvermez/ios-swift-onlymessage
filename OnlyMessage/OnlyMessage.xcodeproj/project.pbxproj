@@ -24,8 +24,9 @@
 		EF829F2A29A575020038FB56 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EF829F2929A575020038FB56 /* FirebaseAuth */; };
 		EF829F2C29A575020038FB56 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EF829F2B29A575020038FB56 /* FirebaseFirestore */; };
 		EF829F2E29A575020038FB56 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EF829F2D29A575020038FB56 /* FirebaseStorage */; };
-		EF829F3229A57EEB0038FB56 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF829F3129A57EEB0038FB56 /* Authentication.swift */; };
 		EF829F3529A58A000038FB56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF829F3429A58A000038FB56 /* GoogleService-Info.plist */; };
+		EF829F3E29A64A6E0038FB56 /* PHPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF829F3D29A64A6E0038FB56 /* PHPickerDelegate.swift */; };
+		EF829F4129A64D480038FB56 /* OMFirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF829F4029A64D480038FB56 /* OMFirebaseAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +64,9 @@
 		EF064CC429A2E9DC00AF6A20 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		EF829F2129A522580038FB56 /* OMChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMChatsViewController.swift; sourceTree = "<group>"; };
 		EF829F2329A522670038FB56 /* OMChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMChatRoomViewController.swift; sourceTree = "<group>"; };
-		EF829F3129A57EEB0038FB56 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		EF829F3429A58A000038FB56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF829F3D29A64A6E0038FB56 /* PHPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerDelegate.swift; sourceTree = "<group>"; };
+		EF829F4029A64D480038FB56 /* OMFirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMFirebaseAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,16 +121,14 @@
 		EF064C8929A2A02000AF6A20 /* OnlyMessage */ = {
 			isa = PBXGroup;
 			children = (
-				EF829F3329A5814D0038FB56 /* Functions */,
 				EF064CC129A2E81D00AF6A20 /* Controller */,
-				EF064C8A29A2A02000AF6A20 /* AppDelegate.swift */,
-				EF064C8C29A2A02000AF6A20 /* SceneDelegate.swift */,
-				EF064C9329A2A02100AF6A20 /* Assets.xcassets */,
+				EF829F3329A5814D0038FB56 /* Functions */,
+				EF829F3C29A64A5C0038FB56 /* Delegates */,
+				EF829F4229A64D600038FB56 /* Support */,
+				EF829F4329A64D7B0038FB56 /* Resources */,
+				EF829F3F29A64D3A0038FB56 /* Firebase */,
 				EF064C9529A2A02100AF6A20 /* LaunchScreen.storyboard */,
-				EF064C9829A2A02100AF6A20 /* Info.plist */,
 				EF829F3429A58A000038FB56 /* GoogleService-Info.plist */,
-				EF064CBC29A2E20400AF6A20 /* UIButton+Extension.swift */,
-				EF064CC429A2E9DC00AF6A20 /* UIView+Extension.swift */,
 			);
 			path = OnlyMessage;
 			sourceTree = "<group>";
@@ -164,9 +164,44 @@
 		EF829F3329A5814D0038FB56 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				EF829F3129A57EEB0038FB56 /* Authentication.swift */,
 			);
 			path = Functions;
+			sourceTree = "<group>";
+		};
+		EF829F3C29A64A5C0038FB56 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				EF829F3D29A64A6E0038FB56 /* PHPickerDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		EF829F3F29A64D3A0038FB56 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				EF829F4029A64D480038FB56 /* OMFirebaseAuth.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		EF829F4229A64D600038FB56 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				EF064CBC29A2E20400AF6A20 /* UIButton+Extension.swift */,
+				EF064CC429A2E9DC00AF6A20 /* UIView+Extension.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		EF829F4329A64D7B0038FB56 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EF064C9829A2A02100AF6A20 /* Info.plist */,
+				EF064C9329A2A02100AF6A20 /* Assets.xcassets */,
+				EF064C8C29A2A02000AF6A20 /* SceneDelegate.swift */,
+				EF064C8A29A2A02000AF6A20 /* AppDelegate.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,11 +370,12 @@
 				EF829F2429A522670038FB56 /* OMChatRoomViewController.swift in Sources */,
 				EF064C8F29A2A02000AF6A20 /* OMLoginViewController.swift in Sources */,
 				EF064CBD29A2E20400AF6A20 /* UIButton+Extension.swift in Sources */,
+				EF829F4129A64D480038FB56 /* OMFirebaseAuth.swift in Sources */,
+				EF829F3E29A64A6E0038FB56 /* PHPickerDelegate.swift in Sources */,
 				EF064C8B29A2A02000AF6A20 /* AppDelegate.swift in Sources */,
 				EF829F2229A522580038FB56 /* OMChatsViewController.swift in Sources */,
 				EF064C8D29A2A02000AF6A20 /* SceneDelegate.swift in Sources */,
 				EF064CC329A2E84000AF6A20 /* OMSignUpViewController.swift in Sources */,
-				EF829F3229A57EEB0038FB56 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,7 +546,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z924NYN8MX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OnlyMessage/Info.plist;
+				INFOPLIST_FILE = OnlyMessage/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -538,7 +574,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z924NYN8MX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OnlyMessage/Info.plist;
+				INFOPLIST_FILE = OnlyMessage/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

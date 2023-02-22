@@ -7,7 +7,11 @@
 
 import UIKit
 import FirebaseAuth
-class OMSignUpViewController: UIViewController {
+import Photos
+import PhotosUI
+class OMSignUpViewController: UIViewController{
+    
+    var imageViewProfileImage = UIImageView()
     var textFieldEmail = UITextField()
     var textFieldPassword = UITextField()
     var textFieldAgainPassword = UITextField()
@@ -17,12 +21,24 @@ class OMSignUpViewController: UIViewController {
     var buttonSignUp = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubviews(textFieldEmail,textFieldPassword,textFieldName,textFieldSurname,textFieldUsername,textFieldAgainPassword, buttonSignUp)
+        view.addSubviews(imageViewProfileImage,textFieldEmail,textFieldPassword,textFieldName,textFieldSurname,textFieldUsername,textFieldAgainPassword, buttonSignUp)
         view.backgroundColor = UIColor(named: "bg_login")
         createUI()
     }
     
     func createUI() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewProfileImageTapped))
+        imageViewProfileImage.addGestureRecognizer(tapGestureRecognizer)
+        imageViewProfileImage.image = UIImage(named: "image_user_empty")
+        imageViewProfileImage.contentMode = .scaleAspectFill
+        imageViewProfileImage.isUserInteractionEnabled = true
+        imageViewProfileImage.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(100)
+            make.top.equalToSuperview().offset(100)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        
         textFieldEmail.borderStyle = .line
         textFieldEmail.layer.borderColor = UIColor.systemBlue.cgColor
         textFieldEmail.backgroundColor = .cyan
@@ -30,7 +46,7 @@ class OMSignUpViewController: UIViewController {
         textFieldEmail.snp.makeConstraints { make in
             make.height.equalTo(30)
             make.width.equalTo(200)
-            make.top.equalToSuperview().offset(100)
+            make.top.equalTo(imageViewProfileImage.snp.bottom).offset(50)
             make.centerX.equalTo(view.snp.centerX)
         }
         
@@ -99,7 +115,6 @@ class OMSignUpViewController: UIViewController {
         
     }
     @objc func buttonSignUpClicked() {
-     
         if textFieldEmail != nil && textFieldPassword != nil {
             Auth.auth().createUser(withEmail: textFieldEmail.text!, password: textFieldPassword.text!) { data, error in
                 if error != nil {
@@ -114,5 +129,19 @@ class OMSignUpViewController: UIViewController {
         present(vc, animated: true)
         
     }
+    
+    
+    @objc func imageViewProfileImageTapped() {
+        var configuration = PHPickerConfiguration()
+             configuration.filter = .images
+             configuration.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: configuration)
+        let pickerDelegate = PHPickerDelegate()
+             picker.delegate = pickerDelegate
+             present(picker, animated: true)
+    }
+    
+
 
 }
+
